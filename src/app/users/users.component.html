@@ -1,0 +1,19 @@
+<div>
+  <label>New User:
+    <input #newUser />
+  </label>
+  <button mat-flat-button color="primary" class="display addbutton" (click)="add(newUser.value); newUser.value=''">
+    Voeg nieuwe gebruiker toe
+  </button>
+</div>
+
+<h2>Userlist</h2>
+
+<ul class="users">
+  <li *ngFor="let user of users">
+    <a routerLink="/users/{{user.name}}">
+      <span class="badge">{{user.id}}</span> {{user.name}}
+    </a>
+    <button class="delete" title="Delete user" (click)="delete(user.id)">X</button>
+  </li>
+</ul>

@@ -1,0 +1,34 @@
+<h3>Wijzig notitie</h3>
+<div *ngIf="detailNote">
+  <app-notes [showButtons]="false" [showUser]="false" [notes]="detailNote" [user]="user"></app-notes>
+
+  <div class="example-container">
+    <mat-form-field hintLabel="Wijzig title" appearance="fill" class="formfield">
+      <mat-label>Title</mat-label>
+      <input matInput #updateTitle placeholder="Ex. Random Title">
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Kies nieuwe categorie" appearance="fill" class="formfield">
+      <mat-label>Kies categorie</mat-label>
+      <mat-select #updateCategory>
+        <div *ngFor="let cat of categories">
+          <mat-option value={{cat}} class="{{cat}}">{{cat}}</mat-option>
+        </div>
+      </mat-select>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field hintLabel="Wijzig content" appearance="fill" class="formfield contentfield">
+      <mat-label>Content</mat-label>
+      <textarea matInput #updateContent placeholder="Ex. Lorem Ipsum"></textarea>
+    </mat-form-field>
+
+    <br>
+  </div>
+  <button mat-raised-button color="primary"
+    (click)="updateNote(detailNote[0].id, updateTitle.value, updateContent.value, updateCategory.value)"
+    class="display addbutton">Update notitie</button>
+  <button mat-raised-button color="primary"
+    (click)="goBack()"
+    class="display addbutton">Terug naar {{user.name}} overview</button>
+</div>

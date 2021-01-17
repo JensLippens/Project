@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+/* Application-wide Styles */
+h1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+  }
+  mat-card-header{
+    padding: 0%;
+    margin: 0%;
+  }
+    mat-card-title {
+    background-color: gray;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 1.2em;
+    font-style: oblique;
+  }
+  h2, h3 {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+  }
+  body {
+    margin: 2em;
+  }
+  body, input[type="text"], button {
+    color: #333;
+    font-family: Cambria, Georgia, serif;
+  }
+  /* everywhere else */
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .prive {
+    background-color: yellow;
+  }
+  .dringend {
+    background-color: lightcoral;
+  }
+  .hobby {
+    background-color: lightgreen;
+  }
+  .werk {
+    background-color: lightskyblue;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

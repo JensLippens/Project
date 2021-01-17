@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BackendcommService } from './backendcomm.service' 
 
 @Component({
@@ -6,21 +6,18 @@ import { BackendcommService } from './backendcomm.service'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'project-app';
+export class AppComponent implements OnInit {
+  title = 'Lippens-Jens-project-app';
+  welcome = "Welcome to NoteShare";
+  users: string[];
 
-  constructor(private backendcommService: BackendcommService){
+  constructor(private backendcommService: BackendcommService) {}
 
-    this.backendcommService.getUsers().subscribe((data) => {
-      console.log(data);    
-    })
-    this.backendcommService.addUser("test").subscribe((data) => {
-      console.log(data);    
-    })
-    this.backendcommService.addUser("test 2");
-    this.backendcommService.addUser("test 3");
-    this.backendcommService.deleteUser(2).subscribe((data) => {
-      console.log(data);    
-    })
+  ngOnInit() {    
+    this.backendcommService.getUsers().subscribe((data: string[]) => {
+      console.log(data); 
+      this.users = data;
+    });
   }
 }
+

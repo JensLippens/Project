@@ -1,0 +1,59 @@
+<h3>Doorzoek alle notes</h3>
+
+<mat-form-field appearance="fill" class="searchSelect">
+  <mat-label>Zoeken op:</mat-label>
+  <mat-select #searchCategory>
+    <mat-option value="user">User</mat-option>
+    <mat-option value="title">Title</mat-option>
+    <mat-option value="content">Content</mat-option>
+    <mat-option value="cat">Categorie</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field *ngIf="searchCategory.value == 'title' || searchCategory.value == 'content'"
+  hintLabel="niet hoofdlettergevoelig" appearance="outline" class="searchBox">
+  <mat-label>Zoekterm</mat-label>
+  <input matInput #zoekterm placeholder="Placeholder">
+  <button mat-icon-button matSuffix color="primary" aria-label="Example icon button with a heart icon"
+    (click)="search(searchCategory.value, zoekterm.value)">
+    <mat-icon>search</mat-icon>
+  </button>
+</mat-form-field>
+
+<div *ngIf="searchCategory.value == 'user'" class="searchBox">
+  <mat-form-field>
+    <mat-label>Kies User</mat-label>
+    <mat-select #zoekUser>
+      <div *ngFor="let user of users">
+        <mat-option value="{{user.name}}">{{user.name}}</mat-option>
+      </div>
+    </mat-select>
+  </mat-form-field>
+  <button mat-icon-button color="primary" (click)="search(searchCategory.value, zoekUser.value)" class="searchButton">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>
+
+<div *ngIf="searchCategory.value == 'cat'" class="searchBox">
+  <mat-form-field>
+    <mat-label>Kies Categorie</mat-label>
+    <mat-select #zoekCategorie>
+      <div *ngFor="let cat of categories">
+        <mat-option value="{{cat}}">{{cat}}</mat-option>
+      </div>
+    </mat-select>
+  </mat-form-field>
+  <button mat-icon-button color="primary" (click)="search(searchCategory.value, zoekCategorie.value)"
+    class="searchButton">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>
+
+<div class="search">
+  <app-notes [showButtons]="false" [showUser]="true" [notes]="searchNotes"></app-notes>
+</div>
+
+<h3>All notes</h3>
+<div class="allnotes">
+  <app-notes [showButtons]="false" [showUser]="true" [notes]="notes"></app-notes>
+</div>
